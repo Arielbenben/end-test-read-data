@@ -1,5 +1,5 @@
 from app.db.elastic_search_db.repository.terrorist_attack_repository import insert_attacks_to_elastic_db
-from app.db.mongo_db.repository.terrorist_attacks_repository import insert_attacks
+from app.db.mongo_db.repository.terrorist_attacks_repository import insert_attacks_to_mongo_db
 from app.utils.models_utils import convert_attack_to_models, convert_models_to_mongo_dict, \
     update_df_with_additional_columns, calculate_deadly_grade
 import pandas as pd
@@ -15,8 +15,8 @@ def read_csv_files():
     terrorist_attack_path = os.getenv('TERRORIST_ATTACK_PATH')
     terrorist_attack_second_path = os.getenv('TERRORIST_ATTACK_SECOND_PATH')
 
-    df_first_data = pd.read_csv(terrorist_attack_path, encoding='iso-8859-1', nrows=1000)
-    df_second_data = pd.read_csv(terrorist_attack_second_path, encoding='iso-8859-1', nrows=1000)
+    df_first_data = pd.read_csv(terrorist_attack_path, encoding='iso-8859-1', nrows=5000)
+    df_second_data = pd.read_csv(terrorist_attack_second_path, encoding='iso-8859-1', nrows=5000)
 
     return df_first_data, df_second_data
 
@@ -50,12 +50,12 @@ def insert_data_in_batches(df, batch_size=1000):
 
         if len(batch) == batch_size:
             insert_attacks_to_elastic_db(batch)
-            insert_attacks(batch)
+            insert_attacks_to_mongo_db(batch)
             batch = []
 
     if batch:
         insert_attacks_to_elastic_db(batch)
-        insert_attacks(batch)
+        insert_attacks_to_mongo_db(batch)
 
 
 

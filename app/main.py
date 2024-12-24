@@ -1,4 +1,4 @@
-from app.read_files import insert_data_to_db
+from app.service.read_files_service import insert_data_to_db
 
 
 if __name__ == '__main__':

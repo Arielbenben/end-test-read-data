@@ -15,7 +15,7 @@ def insert_attacks_to_elastic_db(terrorist_attacks: list):
 
     try:
         success, failed = bulk(elastic_client, actions)
-        print(f"Successfully inserted {success} records.")
+        print(f"Successfully inserted {success} records to elastic.")
         if failed > 0:
             return {'Error': f'Failed to insert {failed} records'}
         return {'Success': f'Inserted {success} records'}
