@@ -39,4 +39,3 @@ def create_indexes_to_mongo():
 def delete_all_docs_all_indexes():
     elastic_client.delete_by_query(index="_all", body={"query": {"match_all": {}}})
 
-# delete_all_docs_all_indexes()

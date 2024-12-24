@@ -8,4 +8,3 @@ def insert_attacks_to_mongo_db(attacks: List[dict]):
     print(f"Successfully inserted {len(attacks)} records to mongo.")
 
 
-# terrorist_attacks_collection.delete_many({})
