@@ -1,12 +1,11 @@
 from dataclasses import dataclass, asdict
+from typing import List
 
 
 @dataclass
 class Attack:
 
-    attack_type: str
-    attack_type_2: str
-    attack_type_3: str
+    attack_type: List[str]
     weapon: str
     target: str
     target_type: str
