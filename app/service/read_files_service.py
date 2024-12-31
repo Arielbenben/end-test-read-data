@@ -15,8 +15,8 @@ def read_csv_files():
     terrorist_attack_path = os.getenv('TERRORIST_ATTACK_PATH')
     terrorist_attack_second_path = os.getenv('TERRORIST_ATTACK_SECOND_PATH')
 
-    df_first_data = pd.read_csv(terrorist_attack_path, encoding='iso-8859-1')
-    df_second_data = pd.read_csv(terrorist_attack_second_path, encoding='iso-8859-1')
+    df_first_data = pd.read_csv(terrorist_attack_path, encoding='iso-8859-1', nrows=5000)
+    df_second_data = pd.read_csv(terrorist_attack_second_path, encoding='iso-8859-1', nrows=5000)
 
     return df_first_data, df_second_data
 

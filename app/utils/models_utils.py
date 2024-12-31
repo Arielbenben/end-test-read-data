@@ -123,26 +123,9 @@ def rename_columns(df):
     return df
 
 
-# def add_default_columns(df):
-#     df['nperps'] = 0
-#     df['attacktype1_txt'] = None
-#     df['attacktype2_txt'] = None
-#     df['attacktype3_txt'] = None
-#     df['target1'] = None
-#     df['targtype1_txt'] = None
-#     df['targsubtype1_txt'] = None
-#     df['region_txt'] = None
-#     df['latitude'] = None
-#     df['longitude'] = None
-#     df['provstate'] = None
-#     df['location'] = None
-#     return df
-
-
 def update_df_with_additional_columns(df: DataFrame):
     df = process_date_columns(df)
     df = rename_columns(df)
-    # df = add_default_columns(df)
 
     return df
 
